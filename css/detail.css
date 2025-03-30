@@ -30,7 +30,7 @@ img {
     margin: 20px 0px 10px 0px;
 }
 
-.info_forms form{
+.info_forms p, form{
     margin: 25px;
     display: flex;
     flex-direction: column;
