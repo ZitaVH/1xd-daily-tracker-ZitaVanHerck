@@ -9,16 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // Laad bestaande gegevens als die er zijn
-    const savedProject = JSON.parse(localStorage.getItem("project"));
-    if (savedProject) {
+    const savedProjects = JSON.parse(localStorage.getItem("projects")) || [];
+    if (savedProjects.length > 0) {
+        const savedProject = savedProjects[0]; 
         projectNameInput.value = savedProject.name || "";
         hookSizeInput.value = savedProject.hookSize || "";
     }
 
     saveButton.addEventListener("click", (e) => {
-        e.preventDefault(); // Voorkomt standaard gedrag
-
+        e.preventDefault();
         console.log("Save button clicked");
 
         const projectData = {
@@ -27,7 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         if (projectData.name && projectData.hookSize) {
-            localStorage.setItem("project", JSON.stringify(projectData));
+            const savedProjects = JSON.parse(localStorage.getItem("projects")) || [];
+            savedProjects[0] = projectData;
+            localStorage.setItem("projects", JSON.stringify(savedProjects));
             alert("Project saved successfully!");
             console.log("Saved data:", projectData);
         } else {
@@ -35,6 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
             console.warn("Empty fields detected");
         }
 
-        console.log("LocalStorage content:", localStorage.getItem("project"));
+        console.log("LocalStorage content:", localStorage.getItem("projects"));
     });
 });

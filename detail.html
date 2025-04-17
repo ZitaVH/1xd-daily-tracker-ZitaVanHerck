@@ -7,18 +7,17 @@
     <link rel="stylesheet" href="./css/detail.css">
 </head>
 <body>
-    <h1>Saturday: 1 February 2025 - <a id="edit_btn" href="edit.html">Edit</a></h1>
-
-    <div class="project">   
-        <img id="project-img" src="https://placehold.co/300x300" alt="">
-        <h2 id="project-name">Project name</h2>
+    <h1>Saturday: 1 February 2025</h1>
+    
+    <div>
+        <label for="dropdown_projects">Select Project:</label>
+        <select id="dropdown_projects">
+            <option value="">Select a project</option>
+        </select>
     </div>
 
     <div class="info_forms">
-        <p id="yarn-used">Yarn used:</p>
         <p id="hook-size">Hook size (mm):</p>
-        <p id="pattern">Pattern:</p>
-        <p id="difficulty">Difficulty level:</p>
     </div>
 
     <div class="daily_input">
@@ -27,28 +26,12 @@
                 <label>Time crocheted:</label>
                 <input type="text" id="time-crocheted"><br><br>
             </div>
-
-            <div>
-                <label>Stitches used/learned today:</label><br>
-                <textarea id="stitches" name="stitches" rows="4"></textarea><br>
-            </div>
-
-            <div>
-                <label>Pattern rating:</label><br>
-                <select id="rating" name="rating">
-                    <option>⭐</option>
-                    <option>⭐⭐</option>
-                    <option>⭐⭐⭐</option>
-                    <option>⭐⭐⭐⭐</option>
-                    <option>⭐⭐⭐⭐⭐</option>
-                </select> <br><br>
-            </div>
         </form>
     </div>
    
     <div class="btn_container">
         <a class="btn" id="back_btn" href="index.html">&lt; Back</a>
-        <a class="btn" id="finished_btn" href="#">Save Project</a>
+        <a class="btn" id="finished_btn" href="#">Save Today</a>
     </div>
 
     <script src="detail.js"></script>
