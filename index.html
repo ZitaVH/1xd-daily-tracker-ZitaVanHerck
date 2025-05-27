@@ -9,38 +9,23 @@
 <body>
     <h1>Crochet Tracker</h1>
     
-    <a id="new_project_btn" href="edit.html">New Project</a>
-
     <div class="header_info">
-        <h2>February 2025</h2>
-        <p>Streak: ... days</p>
+        <a id="new_project_btn" href="edit.html">New Project</a>
+        <h2 id="current-date" ></h2>
+        <p>Streak: <span id="streak-count">0</span> day(s)</p>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Mon</th> <th>Tue</th> <th>Wed</th> <th>Thu</th> <th>Fri</th> <th>Sat</th> <th>Sun</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="other_month">27</td> <td class="other_month">28</td>  <td class="other_month">29</td>  <td class="other_month">30</td>  <td class="other_month">31</td>  <td class="finished_project1"><a href="detail.html"></a>1</td> <td class="finished_project1">2</td>
-            </tr>
-            <tr>
-                <td class="finished_project1">3</td> <td class="finished_project1">4</a></td> <td class="finished_project1">5</td> <td class= "finished_project1" >6</td> <td class="finished_project1_end">7</td> <td class="finished_project2">8</td> <td class="finished_project2">9</td>
-            </tr>
-            <tr>
-                <td class="finished_project2">10</td> <td class="finished_project2">11</td> <td class="finished_project2">12</td> <td class="finished_project2_end">13</td> <td class="current_project1">14</td> <td class="current_project1">15</td> <td class="current_project1">16</td>
-            </tr>
-            <tr>
-                <td class="current_project2">17</td> <td class="current_project2">18</td> <td>19</td> <td>20</td> <td>21</td> <td>22</td> <td>23</td>
-            </tr>
-            <tr>
-                <td>24</td> <td>25</td> <td>26</td> <td>27</td> <td>28</td> <td class="other_month">1</td> <td class="other_month">2</td>
-            </tr>
-    
-        </tbody>
-    </table>
+<table>
+    <thead>
+        <tr>
+            <th>Mon</th> <th>Tue</th> <th>Wed</th> <th>Thu</th> <th>Fri</th> <th>Sat</th> <th>Sun</th>
+        </tr>
+    </thead>
+    <tbody id="calendar-body">
+        
+    </tbody>
+</table>
+
 
         <h3 id="register">Today: <a  id="register_btn" href="detail.html">Register</a></h3>
 
@@ -51,9 +36,10 @@
             <div class="current_project">
                
                 <div class="project_info">
-                    <p><a class="current_project1" href="#">Project name</a>  hook (mm) used</p>
-                </div>
+                    <p><a id="current_project_link" href="#">...</a> <span id="current_project_hook">...</span></p>
             </div>
         </div>
-</body>
+
+       <script src="js/index.js"></script>
+    </body>
 </html>

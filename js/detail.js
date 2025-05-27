@@ -1,12 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+    const currentDateEl = document.getElementById("current-date");
+
+    const today = new Date();
+    const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+    const formattedDate = today.toLocaleDateString("en-GB", options);
+
+    currentDateEl.textContent = formattedDate;
+
     const savedProjects = JSON.parse(localStorage.getItem("projects")) || [];
     const dropdown = document.getElementById("dropdown_projects");
+    const hookSizeDisplay = document.getElementById("hook-size");
+    const timeInput = document.getElementById("time-crocheted");
+    const saveBtn = document.getElementById("finished_btn");
 
+    
     if (savedProjects.length > 0) {
         savedProjects.forEach((project, index) => {
             const option = document.createElement("option");
-            option.value = index; // Gebruik index als value
-            option.text = project.name; // Naam van het project
+            option.value = index; 
+            option.text = project.name;
             dropdown.add(option);
         });
     } else {
@@ -15,15 +28,40 @@ document.addEventListener("DOMContentLoaded", () => {
         dropdown.add(emptyOption);
     }
 
-    dropdown.addEventListener("change", function() {
+    dropdown.addEventListener("change", function () {
         const selectedIndex = this.value;
         if (selectedIndex !== "") {
             const selectedProject = savedProjects[selectedIndex];
-            document.getElementById("project-name").textContent = selectedProject.name;
-            document.getElementById("hook-size").textContent = `Hook size (mm): ${selectedProject.hookSize}`;
+            hookSizeDisplay.textContent = `Hook size (mm): ${selectedProject.hookSize}`;
         } else {
-            document.getElementById("project-name").textContent = "Project name";
-            document.getElementById("hook-size").textContent = "Hook size (mm):";
+            hookSizeDisplay.textContent = "Hook size (mm):";
         }
+    });
+
+    saveBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const selectedIndex = dropdown.value;
+        const timeSpent = timeInput.value.trim();
+        const today = new Date().toISOString().split("T")[0]; // Automatische datum: "2025-02-01"
+
+        if (selectedIndex === "" || !timeSpent) {
+            alert("Selecteer een project en vul tijd in.");
+            return;
+        }
+
+        const selectedProject = savedProjects[selectedIndex];
+        const newLog = {
+            date: today,
+            projectName: selectedProject.name,
+            time: timeSpent
+        };
+
+        const logs = JSON.parse(localStorage.getItem("logs")) || [];
+        logs.push(newLog);
+        localStorage.setItem("logs", JSON.stringify(logs));
+
+        alert("Tijd succesvol opgeslagen!");
+        console.log("Saved log:", newLog);
     });
 });
